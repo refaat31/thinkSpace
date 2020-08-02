@@ -1,24 +1,24 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
-const gravatar = require("gravatar");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const config = require("config");
+const { check, validationResult } = require('express-validator');
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
-const User = require("../../models/User");
-const { json } = require("express");
+const User = require('../../models/User');
+const { json } = require('express');
 // @route   POST api/users
 // @desc    register users
 // @access  public
 router.post(
-  "/",
+  '/',
   [
-    check("name", "name is required").not().isEmpty(),
-    check("email", "Email is invalid").isEmail(),
+    check('name', 'name is required').not().isEmpty(),
+    check('email', 'Email is invalid').isEmail(),
     check(
-      "password",
-      "please enter a password with 6 or more characters"
+      'password',
+      'please enter a password with 6 or more characters'
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
@@ -33,14 +33,14 @@ router.post(
       //see if user exists
       let user = await User.findOne({ email });
       if (user) {
-        return res.status(400).json({ errors: [{ msg: "user exists" }] });
+        return res.status(400).json({ errors: [{ msg: 'user exists' }] });
       }
 
       //get user's gravatar
       const avatar = gravatar.url(email, {
-        s: "200",
-        r: "pg",
-        d: "mm",
+        s: '200',
+        r: 'pg',
+        d: 'mm',
       });
 
       user = new User({
@@ -63,17 +63,17 @@ router.post(
       };
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        config.get('jwtSecret'),
         { expiresIn: 36000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
         }
       );
-     // res.send("user registered");
+      // res.send("user registered");
     } catch (error) {
       console.log(err.messsage);
-      res.status(500).send("server error");
+      res.status(500).send('server error');
     }
   }
 );
