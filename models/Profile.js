@@ -2,57 +2,57 @@ const mongoose = require('mongoose');
 const ProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: 'user'
   },
   company: {
-    type: String,
+    type: String
   },
   website: {
-    type: String,
+    type: String
   },
   location: {
-    type: String,
+    type: String
   },
   status: {
     type: String,
-    required: true,
+    required: true
   },
   skills: {
     type: [String],
-    required: true,
+    required: true
   },
   bio: {
-    type: String,
+    type: String
   },
   githubusername: {
-    type: String,
+    type: String
   },
   experience: [
     {
       title: {
         type: String,
-        required: true,
+        required: true
       },
       company: {
         type: String,
-        required: true,
+        required: true
       },
       location: {
-        type: String,
+        type: String
       },
       from: {
         type: Date,
-        required: true,
+        required: true
       },
       current: {
         type: Boolean,
-        default: false,
+        default: false
       },
       to: {
-        type: Date,
+        type: Date
       },
       description: {
-        type: String,
+        type: String
       },
     },
   ],
@@ -60,29 +60,29 @@ const ProfileSchema = new mongoose.Schema({
     {
       school: {
         type: String,
-        required: true,
+        required: true
       },
       degree: {
         type: String,
-        required: true,
+        required: true
       },
       fieldofstudy: {
         type: String,
-        required,
+        required:true
       },
       from: {
         type: Date,
-        required: true,
+        required: true
       },
       current: {
         type: Boolean,
-        default: false,
+        default: false
       },
       to: {
-        type: Date,
+        type: Date
       },
       description: {
-        type: String,
+        type: String
       },
     },
   ],
