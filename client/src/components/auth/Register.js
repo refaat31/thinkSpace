@@ -1,7 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setAlert} from '../../actions/alert'
+
+//why do we need this?
+import PropTypes from 'prop-types'
+
 //import axios from 'axios';
-const Register = () => {
+const Register = (props) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,7 +23,8 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('passwords dont match');
+      //console.log('passwords dont match');
+      props.setAlert('passwords do not match','danger')
     } else {
       //making requests w/out redux
       //   const newUser = { name, email, password, password2 };
@@ -97,4 +104,8 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert : PropTypes.func.isRequired
+}
+
+export default connect(null,{setAlert})(Register);
