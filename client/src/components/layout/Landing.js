@@ -15,6 +15,7 @@ const Landing = () => {
               Login
             </Link>
           </div>
+          <h5><span>Photo by <a href="https://unsplash.com/@bendavisual?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Benjamin Davies</a> on <a href="https://unsplash.com/s/photos/thinking?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span></h5>
         </div>
       </div>
     </section>
